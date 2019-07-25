@@ -13,7 +13,7 @@ app.register_blueprint(facebook_bp, url_prefix="/login")
 def index():
     if not facebook.authorized:
         print("Try to OAuth login :", facebook.authorized)
-        redirect(url_for("facebook.login"))
+        return redirect(url_for("facebook.login"))
     print("Authorized already")
     resp = facebook.get("/me")
     assert resp.ok, resp.text
