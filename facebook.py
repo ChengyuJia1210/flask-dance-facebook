@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 from flask_dance.contrib.facebook import make_facebook_blueprint, facebook
 
 app = Flask(__name__)
@@ -17,4 +17,5 @@ def index():
     print("Authorized already")
     resp = facebook.get("/me")
     assert resp.ok, resp.text
-    return "You are {name} on Facebook, more detail{detail}".format(name=resp.json()["name"], detail=resp.json())
+    #return "You are {name} on Facebook, more detail{detail}".format(name=resp.json()["name"], detail=resp.json())
+    return render_template('h1.html')
